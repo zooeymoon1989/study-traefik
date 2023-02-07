@@ -1,0 +1,17 @@
+# traefik.yml with only 443 entrypoint
+entryPoints:
+  websecure:
+    address: ":443"
+
+# Also enable DEBUG log
+log:
+  level: DEBUG
+# providers:
+#   file:
+#     filename: "traefik-tls-conf.yml"
+#     watch: true
+
+# API and dashboard configuration
+api:
+  insecure: true
+  dashboard: true

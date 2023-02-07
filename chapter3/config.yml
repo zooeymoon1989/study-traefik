@@ -1,0 +1,25 @@
+tcp :
+  routers :
+    mongo-router :
+      entryPoints :
+      - mongo
+      rule : HostSNI(`*`)
+      service : mongo-tcp-service
+  services :
+    mongo-tcp-service:
+      loadBalancer :
+        terminationDelay: 50
+        servers :
+        - address  : "10.0.0.6:27017"
+
+udp :
+  routers :
+    tftp-router :
+      entryPoints :
+      - tftp
+      service : tftp-service
+  services:
+    tftp-service:
+      loadBalancer :
+        servers :
+        - address  : "10.0.0.6:69"

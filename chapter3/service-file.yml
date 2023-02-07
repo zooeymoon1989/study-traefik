@@ -1,0 +1,19 @@
+## traefik.yml
+
+# entrypoint
+entryPoints:
+  mongo :
+    address : ":80"
+  tftp :
+    address : ":69/udp"
+
+# Docker configuration backend
+providers:
+  file :
+    watch : true
+    filename : "/home/ubuntu/traefik/chapter3/config.yml"
+
+# API and dashboard configuration
+api:
+  insecure: true
+  dashboard: true

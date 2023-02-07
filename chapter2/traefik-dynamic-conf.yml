@@ -1,0 +1,109 @@
+http:
+  routers:
+    guest-router :
+      entryPoints :
+      - web
+      rule : Host(`www.liwenqiang.site`)
+      service : guestbook-service
+    # router0:
+    #   entryPoints:
+    #   - web
+    #   middlewares:
+    #     - basic-auth
+    #   service: hello-world
+    #   rule: Path(`/`)
+    # router1:
+    #   entryPoints:
+    #   - web
+    #   service: ping
+    #   rule: Path(`/ping`)
+  services:
+    ###
+    # round robin
+    ###
+    # guestbook-service :
+    #   loadBalancer :
+    #     # sticky :
+    #     #   cookie : {}
+    #     servers :
+    #     - url  : "http://10.0.0.8:3000/"
+    #     - url  : "http://10.0.0.15:3000/"
+    #     - url  : "http://10.0.0.6:3000/"
+    #     healthCheck:
+    #       path: /ping
+    #       interval: "10s"
+    #       timeout: "1s"
+    ###
+    # weight round robin
+    ###
+    # guestbook-service :
+    #   weighted:
+    #     sticky:
+    #       cookie:
+    #         httpOnly: true
+    #     services:
+    #     - name: guestv1
+    #       weight: 3
+    #     - name: guestv2
+    #       weight: 1
+    # guestv1 :
+    #   loadBalancer :
+    #     sticky:
+    #       cookie:
+    #         httpOnly: true
+    #     servers :
+    #     - url  : "http://10.0.0.8:3000/"  
+    #     - url  : "http://10.0.0.15:3000/"  
+    # guestv2 :
+    #   loadBalancer :
+    #     servers :
+    #     - url  : "http://10.0.0.6:3000/"  
+
+    # hello-world:
+    #   loadBalancer:
+    #     servers:
+    #     - url: http://localhost:3000/
+    # ping:
+    #   loadBalancer:
+    #     servers:
+    #     - url: http://localhost:3000/ping
+  # middlewares:
+  #   basic-auth:
+  #     basicAuth:
+  #       users:
+  #         - "admin:$apr1$JsindKAS$zCWAvabJOgQvI.Dd3zjtE."
+
+
+  ### 
+  #  mirros
+  ###
+    guestbook-service :
+      mirroring:
+        service: guestv1
+        maxBodySize : 1024
+        mirrors:
+        - name: guestv2
+          percent: 10
+    
+    guestv1 :
+      loadBalancer :
+        sticky:
+          cookie:
+        servers :
+        - url  : "http://10.0.0.8:3000/"
+        healthCheck:
+          scheme : http
+          path: /ping
+          interval: "10s"
+          timeout: "1s"
+
+    guestv2 :
+      loadBalancer :
+        servers :
+        - url  : "http://10.0.0.15:3000/"
+        - url  : "http://10.0.0.6:3000/"
+        healthCheck:
+          scheme : http
+          path: /ping
+          interval: "10s"
+          timeout: "1s"

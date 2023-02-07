@@ -1,0 +1,17 @@
+## traefik.yml
+
+# entrypoint
+entryPoints:
+  web:
+   address: ":80"
+
+# Docker configuration backend
+providers:
+  file:
+    filename: "traefik-dynamic-conf.yml"
+    watch: true
+
+# API and dashboard configuration
+api:
+  insecure: true
+  dashboard: true
