@@ -19,5 +19,5 @@ tcp :
 #We also need to provide the TLS certificates
 tls:
   certificates:
-    - certFile: tls/mosquitto.liwenqiang.site.pem
+    - certFile: /root/study-traefik/chapter4/tls/mosquitto.liwenqiang.site.pem
       # keyFile: localhost+1-key.pem
