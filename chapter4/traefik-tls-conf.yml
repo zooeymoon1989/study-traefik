@@ -1,15 +1,15 @@
 # traefik-tls-conf.yml
 tcp :
   routers :
-    mongo-router :
+    mosquitto-router :
       entryPoints :
       - websecure
-      rule : "HostSNI(`localhost`) || HostSNI(`127.0.0.1`)"
-      service : mongo-tcp-service
+      rule : "HostSNI(`mosquitto.liwenqiang.site`)"
+      service : mosquitto-tcp-service
       tls: {} #This block will enable TLS for this route
 
 #We also need to provide the TLS certificates
 tls:
   certificates:
-    - certFile: localhost+1.pem
-      keyFile: localhost+1-key.pem
+    - certFile: tls/mosquitto.liwenqiang.site.pem
+      # keyFile: localhost+1-key.pem

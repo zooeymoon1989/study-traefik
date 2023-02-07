@@ -6,10 +6,10 @@ entryPoints:
 # Also enable DEBUG log
 log:
   level: DEBUG
-# providers:
-#   file:
-#     filename: "traefik-tls-conf.yml"
-#     watch: true
+providers:
+  file:
+    filename: "traefik-tls-conf.yml"
+    watch: true
 
 # API and dashboard configuration
 api:
