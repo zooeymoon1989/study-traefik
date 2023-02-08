@@ -30,9 +30,14 @@ tcp :
         - address: "127.0.0.1:8883"
 #We also need to provide the TLS certificates
 tls:
-  certificates:
-    - certFile: /etc/mosquitto/certs/server.crt
-      keyFile: /etc/mosquitto/certs/server.key
+  stores:
+      default:
+        defaultCertificate:
+          certFile: /etc/mosquitto/certs/server.crt
+          keyFile: /etc/mosquitto/certs/server.key
+  # certificates:
+  #   - certFile: /etc/mosquitto/certs/server.crt
+  #     keyFile: /etc/mosquitto/certs/server.key
 
 middlewares:
   auth:
