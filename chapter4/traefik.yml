@@ -1,7 +1,7 @@
 # traefik.yml with only 443 entrypoint
 entryPoints:
   mosquitto:
-    address: ":8883"
+    address: ":18883"
   websecure:
     address: ":443"
 
