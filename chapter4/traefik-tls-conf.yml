@@ -15,7 +15,7 @@ tcp :
     mosquitto-tcp-service: 
       loadBalancer:
         servers:
-        - address: "127.0.0.1:8884"
+        - address: "127.0.0.1:8883"
 #We also need to provide the TLS certificates
 tls:
   certificates:
