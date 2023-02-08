@@ -10,7 +10,9 @@ tcp :
       #   certResolver: "letsencrypt"
       #   domains:
       #     - main: "tlstraefik.rahulsharma.page"
-      tls: {} #This block will enable TLS for this route
+      #This block will enable TLS for this route
+      tls: 
+        passthrough: true 
   services:
     mosquitto-tcp-service: 
       loadBalancer:
