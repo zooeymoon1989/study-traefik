@@ -2,8 +2,16 @@
 entryPoints:
   mosquitto:
     address: ":18883"
-  websecure:
+  https:
     address: ":443"
+  http: 
+    address: ":80"
+    # force redirecting scheme from http to https 
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
 
 # Also enable DEBUG log
 log:

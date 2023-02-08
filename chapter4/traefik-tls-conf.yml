@@ -1,4 +1,15 @@
 # traefik-tls-conf.yml
+http:
+  routers:
+    dashboard:
+      entryPoints:
+        - https
+      rule: "Host(`tlstraefik.rahulsharma.page`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      service: api@internal
+      tls: {}
+      middlewares:
+        - auth
+
 tcp :
   routers :
     mosquitto-router :
@@ -6,10 +17,6 @@ tcp :
       - mosquitto
       rule: "HostSNI(`mosquitto.liwenqiang.site`) || HostSNI(`127.0.0.1`)"
       service : mosquitto-tcp-service
-      # tls:
-      #   certResolver: "letsencrypt"
-      #   domains:
-      #     - main: "tlstraefik.rahulsharma.page"
       #This block will enable TLS for this route
       tls: 
         # the passthrough option can be specified to set 
@@ -26,3 +33,9 @@ tls:
   certificates:
     - certFile: /etc/mosquitto/certs/server.crt
       keyFile: /etc/mosquitto/certs/server.key
+
+middlewares:
+  auth:
+   basicAuth:
+    users:
+      - "admin:$apr1$JsindKAS$zCWAvabJOgQvI.Dd3zjtE."
