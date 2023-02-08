@@ -4,7 +4,8 @@ tcp :
     mosquitto-router :
       entryPoints :
       - websecure
-      rule : "HostSNI(`mosquitto.liwenqiang.site`)"
+      # rule : "HostSNI(`mosquitto.liwenqiang.site`)"
+      rule: "Path(`/mosquitto`)"
       service : mosquitto-tcp-service
       # tls:
       #   certResolver: "letsencrypt"
