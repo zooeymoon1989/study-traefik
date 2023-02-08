@@ -1,17 +1,3 @@
-# traefik-tls-conf.yml
-http:
-  routers:
-    dashboard:
-      entryPoints:
-        - https
-      rule: "Host(`www.liwenqiang.site`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-      service: api@internal
-      tls: 
-        domains:
-          - main: "www.liwenqiang.site"
-      middlewares:
-        - auth
-
 tcp :
   routers :
     mosquitto-router :
@@ -37,12 +23,3 @@ tls:
         defaultCertificate:
           certFile: /etc/mosquitto/certs/server.crt
           keyFile: /etc/mosquitto/certs/server.key
-  # certificates:
-  #   - certFile: /etc/mosquitto/certs/server.crt
-  #     keyFile: /etc/mosquitto/certs/server.key
-
-middlewares:
-  auth:
-   basicAuth:
-    users:
-      - "admin:$apr1$JsindKAS$zCWAvabJOgQvI.Dd3zjtE."
