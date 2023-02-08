@@ -6,7 +6,9 @@ http:
         - https
       rule: "Host(`www.liwenqiang.site`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
       service: api@internal
-      tls: {}
+      tls: 
+        domains:
+          - main: "www.liwenqiang.site"
       middlewares:
         - auth
 
