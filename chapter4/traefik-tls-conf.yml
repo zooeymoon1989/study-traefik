@@ -15,7 +15,7 @@ tcp :
     mosquitto-router :
       entryPoints :
       - mosquitto
-      rule: "HostSNI(`mosquitto.liwenqiang.site`) || HostSNI(`127.0.0.1`)"
+      rule: "HostSNI(`www.liwenqiang.site`) || HostSNI(`127.0.0.1`)"
       service : mosquitto-tcp-service
       #This block will enable TLS for this route
       tls: 
