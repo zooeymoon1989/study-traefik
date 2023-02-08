@@ -3,6 +3,7 @@ entryPoints :
     address : ":80"
 
 providers :
+  directory : /root/study-traefik/chapter5
   watch : true
   filename : traefik-config.yml
   debugLogGeneratedTemplate : true
