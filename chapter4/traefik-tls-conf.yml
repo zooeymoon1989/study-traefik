@@ -3,7 +3,7 @@ tcp :
   routers :
     mosquitto-router :
       entryPoints :
-      - websecure
+      - mosquitto
       rule : "HostSNI(`mosquitto.liwenqiang.site`)"
       service : mosquitto-tcp-service
       # tls:
