@@ -1,0 +1,12 @@
+http :
+  routers :
+    guest-router :
+      entryPoints :
+      - web
+      rule : Host(`localhost`)
+      service : httpbin-service
+  services :
+    httpbin-service :
+      loadBalancer :
+        servers :
+        - url  : http://127.0.0.1:8000/

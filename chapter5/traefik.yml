@@ -1,0 +1,13 @@
+entryPoints :
+  web :
+    address : ":80"
+
+providers :
+  watch : true
+  filename : traefik-config.yml
+  debugLogGeneratedTemplate : true
+
+api :
+  insecure : true
+  dashboard : true
+
