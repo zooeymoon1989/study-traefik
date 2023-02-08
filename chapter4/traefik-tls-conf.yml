@@ -12,6 +12,9 @@ tcp :
       #     - main: "tlstraefik.rahulsharma.page"
       #This block will enable TLS for this route
       tls: 
+        # the passthrough option can be specified to set 
+        # whether the requests should be forwarded "as is", 
+        # keeping all data encrypted
         passthrough: true 
   services:
     mosquitto-tcp-service: 
