@@ -4,16 +4,16 @@ http :
       entryPoints :
       - web
       rule : Host(`httpbin.liwenqiang.site`)
-      middlewares:
-        - allowed-sources
+      # middlewares:
+      #   - allowed-sources
       service : httpbin-service
   services :
     httpbin-service :
       loadBalancer :
         servers :
         - url  : http://127.0.0.1:8000/
-  middlewares:
-    allowed-sources:
-      ipWhiteList:
-        sourceRange:
-          - "127.0.0.1/32"
+  # middlewares:
+  #   allowed-sources:
+  #     ipWhiteList:
+  #       sourceRange:
+  #         - "127.0.0.1/32"
