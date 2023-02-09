@@ -14,17 +14,11 @@ api :
   dashboard : true
 
 accessLog:
-  filePath: access.log
-  # filePath: /var/log/traefik/traefik.log # need to create relative dir first
+  # filePath: access.log
+  filePath: /var/log/traefik/traefik.log # need to create relative dir first
   bufferingSize: 50
-  filters:
-    statusCodes:
-      - "200"
-      - 300-302
-    retryAttempts: true
-    minDuration: 5s
-    fields:
-      defaultMode: keep
+  fields:
+    defaultMode: keep
     names:
       ClientUsername: drop
     headers:
@@ -33,3 +27,9 @@ accessLog:
           User-Agent: redact
           Authorization: drop
           Content-Type: keep
+  filters:
+    statusCodes:
+      - "200"
+      - "300-302"
+    retryAttempts: true
+    minDuration: 10ms
