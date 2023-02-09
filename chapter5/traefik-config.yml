@@ -3,7 +3,7 @@ http :
     httpbin-router :
       entryPoints :
       - web
-      rule : Host(`localhost`)
+      rule : Host(`httpbin.liwenqiang.site`)
       service : httpbin-service
   services :
     httpbin-service :
