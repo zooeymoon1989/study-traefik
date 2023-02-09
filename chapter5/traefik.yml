@@ -1,7 +1,8 @@
 entryPoints :
   web :
     address : ":80"
-
+  metrics:
+    address: :8082
 providers :
   file:
     directory : /root/study-traefik/chapter5
@@ -44,6 +45,7 @@ tracing:
     sameSpan: true
 metrics:
   prometheus:
+    entryPoint: metrics
     # Enable metrics on entry points.
     addEntryPointsLabels: true
     # Enable metrics on services.
