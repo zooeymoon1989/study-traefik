@@ -1,6 +1,6 @@
 http :
   routers :
-    guest-router :
+    httpbin-router :
       entryPoints :
       - web
       rule : Host(`localhost`)
