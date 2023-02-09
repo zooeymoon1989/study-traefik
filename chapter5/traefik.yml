@@ -42,3 +42,9 @@ tracing:
     id128Bit : true
     # Uses SameSpan RPC style traces.
     sameSpan: true
+metrics:
+  prometheus:
+    # Enable metrics on entry points.
+    addEntryPointsLabels: true
+    # Enable metrics on services.
+    addServicesLabels : true
