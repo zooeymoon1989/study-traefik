@@ -14,7 +14,8 @@ api :
   dashboard : true
 
 accessLog:
-  filePath: /var/log/traefik/traefik.log # need to create relative dir first
+  filePath: access.log
+  # filePath: /var/log/traefik/traefik.log # need to create relative dir first
   bufferingSize: 50
   filters:
     statusCodes:
