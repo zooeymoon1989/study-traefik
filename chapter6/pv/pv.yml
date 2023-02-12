@@ -1,77 +1,62 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-vault-consul-consul-server
+  name: data-consul-consul-server-0
   labels:
-    volume: data-vault-consul-consul-server
+    volume: data-consul-consul-server-0
 spec:
   storageClassName: manual
   capacity:
-    storage: 8Gi
+    storage: 2Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/data/consul-storage"
+    path: "/data/consul-storage/0"
 ---
 
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: data-vault-consul-consul-server-0
+  name: data-consul-consul-server-1
+  labels:
+    volume: data-consul-consul-server-1
 spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
   accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 2Gi
-  selector:
-    matchLabels:
-      volume: data-vault-consul-consul-server
-
+    - ReadWriteMany
+  hostPath:
+    path: "/data/consul-storage/1"
 ---
 
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: data-vault-consul-consul-server-1
+  name: data-consul-consul-server-2
+  labels:
+    volume: data-consul-consul-server-2
 spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
   accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 2Gi
-  selector:
-    matchLabels:
-      volume: data-vault-consul-consul-server
-
+    - ReadWriteMany
+  hostPath:
+    path: "/data/consul-storage/2"
 ---
 
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: data-vault-consul-consul-server-2
+  name: data-consul-consul-server-3
+  labels:
+    volume: data-consul-consul-server-3
 spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
   accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 2Gi
-  selector:
-    matchLabels:
-      volume: data-vault-consul-consul-server
-
----
-
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: data-vault-consul-consul-server-3
-spec:
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 2Gi
-  selector:
-    matchLabels:
-      volume: data-vault-consul-consul-server
+    - ReadWriteMany
+  hostPath:
+    path: "/data/consul-storage/3"
