@@ -14,7 +14,7 @@ spec:
   volumeMode: Filesystem
   nfs:
     server: 10.0.0.11
-    path: /vdb/0
+    path: /vdb/v0
     
 ---
 
