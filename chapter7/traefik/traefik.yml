@@ -49,7 +49,7 @@ kind: Service
 metadata:
   name: traefik
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: traefik
   ports:
@@ -72,7 +72,7 @@ kind: Service
 metadata:
   name: traefikudp
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: traefik
   ports:
