@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: host-ingress 
+spec:
+  rules:
+  - host: book.liwenqiang.site
+    http:
+      paths:
+      - path: /productpage
+        pathType: Prefix
+        backend:
+          service:
+            name: productpage
+            port:
+              number: 9080
