@@ -16,12 +16,12 @@ spec:
   selector:
     matchLabels:
       app: traefik
-    annotations:
-      consul.hashicorp.com/connect-inject: "true"
   template:
     metadata:
       labels:
         app: traefik
+      annotations:
+        consul.hashicorp.com/connect-inject: "true"
     spec:
       serviceAccountName: traefik-ingress-controller
       containers:
